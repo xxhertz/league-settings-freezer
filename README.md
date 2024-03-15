@@ -10,13 +10,12 @@ This is precisely what this application does, but in the click of a button, and 
 
 **Download:**
 1. Head to the latest release on the right (or click [here](/releases/latest))
-2. Download [setup.exe](/releases/latest/setup.exe) or [LeagueSettingsFreezer.exe](/releases/latest/LeagueSettingsFreezer.exe) (you don't need both)
-
+2. Download [setup.exe](/releases/download/release/setup.exe) or [LeagueSettingsFreezer.exe](/releases/download/release/LeagueSettingsFreezerTray.exe) (you don't need both)
 LeagueSettingsFreezer is a standalone application, and setup installs the application onto your Desktop and start menu, while also making sure that you have anything the program needs to run.
 
 **Use it:**
 1. Run the application
-2. Check your tray, if the lock icon isn't there, [create an issue](/issues) or [contact me on Discord](https://discord.gg/5vGaZBhde3)
+2. Check your tray, if the lock icon isn't there, [create an issue](../../issues) or [contact me on Discord](https://discord.gg/5vGaZBhde3)
 3. Whenever you want to transfer settings, click the lock and make sure it's, well, locked.
 4. Switch accounts
 5. Profit.
