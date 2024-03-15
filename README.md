@@ -24,4 +24,5 @@ LeagueSettingsFreezer is a standalone application, and setup installs the applic
 #### Can I see it in action?
 
 Of course you can. Click this to watch \\/
+
 [![League Settings Freezer](https://img.youtube.com/vi/GG_xEq2t90Q/0.jpg)](https://www.youtube.com/watch?v=GG_xEq2t90Q)
