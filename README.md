@@ -9,8 +9,10 @@ This is precisely what this application does, but in the click of a button, and 
 #### How can I download and use it?
 
 **Download:**
-1. Head to the latest release on the right (or click [here](/releases/latest))
-2. Download [setup.exe](/releases/download/release/setup.exe) or [LeagueSettingsFreezer.exe](/releases/download/release/LeagueSettingsFreezerTray.exe) (you don't need both)
+1. Head to the latest release on the right (or click [here](../../releases/latest))
+2. Download [setup.exe](../../releases/download/release/setup.exe) or [LeagueSettingsFreezer.exe](../../releases/download/release/LeagueSettingsFreezerTray.exe) (you don't need both)
+https://github.com/xxhertz/league-settings-freezer/releases/download/release/LeagueSettingsFreezerTray.exe
+
 LeagueSettingsFreezer is a standalone application, and setup installs the application onto your Desktop and start menu, while also making sure that you have anything the program needs to run.
 
 **Use it:**
