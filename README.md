@@ -9,9 +9,9 @@ This is precisely what this application does, but in the click of a button, and 
 # Download:
 1. Head to the latest release on the right (or click [here](../../releases/latest) or use the links below)
 2. Download one of the following:
-* [LSFInstaller.msi](../../releases/download/release/LSFInstaller.msi) (desktop)
-* [LSFInstaller-autostart.msi](../../releases/download/release/LSFInstaller-autostart.msi) (above + runs when you start your computer)
-* [LeagueSettingsFreezer.exe](../../releases/download/release/LeagueSettingsFreezerTray.exe) (standalone)
+* [LSFInstaller.msi](../../releases/download/v1.1/LSFInstaller.msi) (desktop)
+* [LSFInstaller-autostart.msi](../../releases/download/v1.1/LSFInstaller-autostart.msi) (above + runs when you start your computer)
+* [LeagueSettingsFreezer.exe](../../releases/download/v1.1/LeagueSettingsFreezerTray.exe) (standalone)
 
 LeagueSettingsFreezer.exe is a standalone application, LSFInstaller installs the application onto your Desktop and start menu, while also making sure that you have anything the program may need to function. The autostart variant will also cause the program to run when you start your computer.
 
