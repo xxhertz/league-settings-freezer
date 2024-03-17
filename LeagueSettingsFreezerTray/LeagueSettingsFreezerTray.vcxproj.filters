@@ -27,7 +27,7 @@
     <ClInclude Include="leaguedir.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="checkprocess.hpp">
+    <ClInclude Include="getprocess.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,7 +38,7 @@
     <ClCompile Include="tray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="checkprocess.cpp">
+    <ClCompile Include="getprocess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
