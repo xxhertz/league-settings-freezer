@@ -20,7 +20,7 @@ std::string league_dir;
 NOTIFYICONDATA nid;
 bool automatic = true;
 bool check_if_in_game = true;
-bool check_if_client_open = true;
+bool check_if_client_open = false;
 
 void automatic_loop() {
 	if (!automatic) return; // pointless just a micro-optimization
