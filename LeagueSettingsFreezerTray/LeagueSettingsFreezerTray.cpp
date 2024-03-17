@@ -10,14 +10,41 @@
 #include "tray.hpp"
 #include "readonly.hpp"
 #include "leaguedir.hpp"
-
+#include "getprocess.hpp"
 #include <shellapi.h>
+#include <thread>
 
 // Global Variables:
 HINSTANCE instance;
 std::string league_dir;
 NOTIFYICONDATA nid;
 bool automatic = true;
+bool check_if_in_game = true;
+bool check_if_client_open = true;
+
+void automatic_loop() {
+	if (!automatic) return; // pointless just a micro-optimization
+	// (the thread would exit before running any code anyways but there's just no point in creating a thread if we're just going to exit)
+
+	std::thread([]() {
+		while (automatic) {
+			bool in_game = false;
+
+			if (check_if_in_game && get_process_id(L"League of Legends.exe") > 0)
+				in_game = true;
+
+			if (check_if_client_open && get_process_id(L"LeagueClient.exe") > 0)
+				in_game = true;
+
+			if (is_readonly(league_dir) == in_game) { // pointless also micro optimization, avoid multiple api calls if they change nothing
+				set_readonly(league_dir, !in_game);
+				update_tray(!in_game, instance, &nid);
+			}
+
+			std::this_thread::sleep_for(std::chrono::seconds(1));
+		}
+	}).detach();
+}
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM command, LPARAM param) {
 	if (message == WM_COMMAND) {
@@ -27,6 +54,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM command, LPARAM param) 
 		}
 		else if (command == 2) {
 			automatic = !automatic;
+			automatic_loop();
+		}
+		else if (command == 3) {
+			check_if_in_game = !check_if_in_game;
+		}
+		else if (command == 4) {
+			check_if_client_open = !check_if_client_open;
 		}
 	}
 	else if (message == WM_MYMESSAGE) {
@@ -35,9 +69,16 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM command, LPARAM param) 
 			update_tray(is_readonly(league_dir), instance, &nid);
 		}
 		else if (param == WM_RBUTTONUP) {
-			HMENU menu = CreatePopupMenu();
-			AppendMenuA(menu, MF_STRING, 1, "Exit");
+			auto menu = CreatePopupMenu();
 			AppendMenuA(menu, automatic ? MF_CHECKED : MF_UNCHECKED, 2, "Automatically Toggle");
+			if (automatic) {
+				auto automatic_menu = CreatePopupMenu();
+				AppendMenuA(automatic_menu, check_if_in_game ? MF_CHECKED : MF_UNCHECKED, 3, "Check if game is open");
+				AppendMenuA(automatic_menu, check_if_client_open ? MF_CHECKED : MF_UNCHECKED, 4, "Check if client is open");
+				
+				AppendMenuA(menu, MF_POPUP, reinterpret_cast<UINT_PTR>(automatic_menu), "Automatic Checks");
+			}
+			AppendMenuA(menu, MF_STRING, 1, "Exit");
 			POINT pt;
 			GetCursorPos(&pt);
 			SetForegroundWindow(hwnd);
@@ -59,7 +100,9 @@ int APIENTRY WinMain(_In_ HINSTANCE inst, _In_opt_ HINSTANCE, _In_ PSTR, _In_ in
 
 	if (!setup_tray(is_readonly(league_dir), instance, &nid, &WndProc))
 		return FALSE;
-
+	
+	automatic_loop();
+	
 	MSG msg;
 	while (GetMessageA(&msg, nullptr, 0, 0)) {
 		if (!TranslateAccelerator(msg.hwnd, LoadAccelerators(inst, MAKEINTRESOURCE(IDC_LEAGUESETTINGSFREEZERTRAY)), &msg)) {
@@ -67,8 +110,8 @@ int APIENTRY WinMain(_In_ HINSTANCE inst, _In_opt_ HINSTANCE, _In_ PSTR, _In_ in
 			DispatchMessageW(&msg);
 		}
 	}
-
+	
 	Shell_NotifyIconW(NIM_DELETE, &nid);
-
+	
 	return (int)msg.wParam;
 }
