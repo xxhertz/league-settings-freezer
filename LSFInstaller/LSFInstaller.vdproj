@@ -49,6 +49,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -65,6 +73,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -155,6 +171,17 @@
                 {
                 }
             }
+            "{1525181F-901A-416C-8A58-119130FE478E}:_9772BB482D6D4B0B8E8FE0080810E37E"
+            {
+            "Name" = "8:#1928"
+            "AlwaysCreate" = "11:FALSE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:StartupFolder"
+                "Folders"
+                {
+                }
+            }
             "{1525181F-901A-416C-8A58-119130FE478E}:_E3F2738449174B49841B7842E7409D02"
             {
             "Name" = "8:#1919"
@@ -182,25 +209,25 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:LeagueSettingsFreezer"
-        "ProductCode" = "8:{053419A8-250B-4197-AD9C-B2D1E571F179}"
-        "PackageCode" = "8:{83B50B47-D7B6-436A-AAA4-7119ECEAECB0}"
+        "ProductCode" = "8:{35D5B4AF-F448-4733-9B02-1EEB61503365}"
+        "PackageCode" = "8:{4A1FA2B9-407D-4EF4-8C01-4DF1CDA1BB5F}"
         "UpgradeCode" = "8:{A9F4BDB8-FBF8-4D4D-8119-1C16F9B758B7}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.1"
         "Manufacturer" = "8:fini.work"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
+        "ARPHELPLINK" = "8:https://github.com/xxhertz/league-settings-freezer/issues"
         "Title" = "8:LSFInstaller"
         "Subject" = "8:"
         "ARPCONTACT" = "8:fini"
         "Keywords" = "8:league,settings,freezer"
         "ARPCOMMENTS" = "8:A tray icon which freezes your League of Legends settings. Ideal for changing accounts "
         "ARPURLINFOABOUT" = "8:https://fini.work"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_0061C45D3F8340E39279AEF234CA3E39"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -303,6 +330,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3239DDC0C276413892E774266C78F2E5"
+            {
+            "Name" = "8:League Settings Freezer"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_490C1C787E764ABCA4DC40FC26F0D309"
+            "Folder" = "8:_9772BB482D6D4B0B8E8FE0080810E37E"
+            "WorkingFolder" = "8:_4A3A7852ECB0416493CDAC5D79F15E62"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_624BE90817904C5F9F8B04F401E5CD58"
             {
             "Name" = "8:League Settings Freezer"
