@@ -20,7 +20,7 @@ std::string league_dir;
 NOTIFYICONDATA nid;
 bool automatic = true;
 bool check_if_in_game = true;
-bool check_if_client_open = false;
+//bool check_if_client_open = false;
 
 void automatic_loop() {
 	if (!automatic) return; // pointless just a micro-optimization
@@ -33,8 +33,9 @@ void automatic_loop() {
 			if (check_if_in_game && get_process_id(L"League of Legends.exe") > 0)
 				in_game = true;
 
-			if (check_if_client_open && get_process_id(L"LeagueClient.exe") > 0)
-				in_game = true;
+			// disabled until i figure out a workaround without reading process memory or native hooks
+			//if (check_if_client_open && get_process_id(L"LeagueClientUxRender.exe") > 0) // this is problematic. settings are loaded upon client opening, not upon logging in
+			//	in_game = true;
 
 			if (is_readonly(league_dir) == in_game) { // pointless also micro optimization, avoid multiple api calls if they change nothing
 				set_readonly(league_dir, !in_game);
@@ -56,12 +57,12 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM command, LPARAM param) 
 			automatic = !automatic;
 			automatic_loop();
 		}
-		else if (command == 3) {
-			check_if_in_game = !check_if_in_game;
-		}
-		else if (command == 4) {
-			check_if_client_open = !check_if_client_open;
-		}
+		//else if (command == 3) {
+			//check_if_in_game = !check_if_in_game;
+		//}
+		//else if (command == 4) {
+			//check_if_client_open = !check_if_client_open;
+		//}
 	}
 	else if (message == WM_MYMESSAGE) {
 		if (param == WM_LBUTTONUP) {
@@ -71,13 +72,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM command, LPARAM param) 
 		else if (param == WM_RBUTTONUP) {
 			auto menu = CreatePopupMenu();
 			AppendMenuA(menu, automatic ? MF_CHECKED : MF_UNCHECKED, 2, "Automatically Toggle");
-			if (automatic) {
-				auto automatic_menu = CreatePopupMenu();
-				AppendMenuA(automatic_menu, check_if_in_game ? MF_CHECKED : MF_UNCHECKED, 3, "Check if game is open");
-				AppendMenuA(automatic_menu, check_if_client_open ? MF_CHECKED : MF_UNCHECKED, 4, "Check if client is open");
+			//if (automatic) {
+				//auto automatic_menu = CreatePopupMenu();
+				//AppendMenuA(automatic_menu, check_if_in_game ? MF_CHECKED : MF_UNCHECKED, 3, "Check if game is open");
+				//AppendMenuA(automatic_menu, check_if_client_open ? MF_CHECKED : MF_UNCHECKED, 4, "Check if client is open");
 				
-				AppendMenuA(menu, MF_POPUP, reinterpret_cast<UINT_PTR>(automatic_menu), "Automatic Checks");
-			}
+				//AppendMenuA(menu, MF_POPUP, reinterpret_cast<UINT_PTR>(automatic_menu), "Automatic Checks");
+			//}
 			AppendMenuA(menu, MF_STRING, 1, "Exit");
 			POINT pt;
 			GetCursorPos(&pt);
@@ -85,13 +86,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM command, LPARAM param) 
 			TrackPopupMenu(menu, TPM_BOTTOMALIGN | TPM_LEFTALIGN, pt.x, pt.y, 0, hwnd, NULL);
 			PostMessageW(hwnd, WM_NULL, 0, 0); // Close the popup menu
 		}
-		else {
+		else
 			return DefWindowProcW(hwnd, message, command, param);
-		}
 	}
-	else {
+	else
 		return DefWindowProcW(hwnd, message, command, param);
-	}
 }
 
 int APIENTRY WinMain(_In_ HINSTANCE inst, _In_opt_ HINSTANCE, _In_ PSTR, _In_ int) {
