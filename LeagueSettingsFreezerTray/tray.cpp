@@ -29,7 +29,7 @@ BOOL setup_tray(bool readonly, HINSTANCE instance, NOTIFYICONDATA* nid, WNDPROC 
 	if (!RegisterClassA(&wcex))
 		return FALSE;
 
-	HWND hWnd = CreateWindowExA(NULL, "LeagueSettingFreezer", "League Setting Freezer", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, instance, nullptr);
+	auto hWnd = CreateWindowExA(NULL, "LeagueSettingFreezer", "League Setting Freezer", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, instance, nullptr);
 	if (!hWnd)
 		return FALSE;
 
