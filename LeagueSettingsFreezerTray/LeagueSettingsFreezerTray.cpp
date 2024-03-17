@@ -17,12 +17,16 @@
 HINSTANCE instance;
 std::string league_dir;
 NOTIFYICONDATA nid;
+bool automatic = true;
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM command, LPARAM param) {
 	if (message == WM_COMMAND) {
 		if (command == 1) {
 			MessageBoxA(NULL, is_readonly(league_dir) ? "Closing LSF, your settings will remain frozen" : "Closing LSF, your settings will remain unfrozen", "League Settings Freezer", MB_OK);
 			PostQuitMessage(0);
+		}
+		else if (command == 2) {
+			automatic = !automatic;
 		}
 	}
 	else if (message == WM_MYMESSAGE) {
@@ -33,6 +37,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM command, LPARAM param) 
 		else if (param == WM_RBUTTONUP) {
 			HMENU menu = CreatePopupMenu();
 			AppendMenuA(menu, MF_STRING, 1, "Exit");
+			AppendMenuA(menu, automatic ? MF_CHECKED : MF_UNCHECKED, 2, "Automatically Toggle");
 			POINT pt;
 			GetCursorPos(&pt);
 			SetForegroundWindow(hwnd);
