@@ -139,12 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="leaguedir.h" />
-    <ClInclude Include="readonly.h" />
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="tray.h" />
+    <ClInclude Include="checkprocess.hpp" />
+    <ClInclude Include="leaguedir.hpp" />
+    <ClInclude Include="readonly.hpp" />
+    <ClInclude Include="Resource.hpp" />
+    <ClInclude Include="tray.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="checkprocess.cpp" />
     <ClCompile Include="LeagueSettingsFreezerTray.cpp" />
     <ClCompile Include="tray.cpp" />
   </ItemGroup>

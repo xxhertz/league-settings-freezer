@@ -1,6 +1,6 @@
-#include "readonly.h"
-#include "resource.h"
-#include "tray.h"
+#include "readonly.hpp"
+#include "resource.hpp"
+#include "tray.hpp"
 
 void update_tray(bool readonly, HINSTANCE instance, NOTIFYICONDATA* nid) {
 	nid->hIcon = reinterpret_cast<HICON>(LoadImageW(instance, MAKEINTRESOURCE(readonly ? READONLY_ICON : WRITABLE_ICON), IMAGE_ICON, 64, 64, LR_DEFAULTCOLOR));

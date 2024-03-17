@@ -15,16 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Resource.h">
+    <ClInclude Include="Resource.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="readonly.h">
+    <ClInclude Include="readonly.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tray.h">
+    <ClInclude Include="tray.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="leaguedir.h">
+    <ClInclude Include="leaguedir.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="checkprocess.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -33,6 +36,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="checkprocess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

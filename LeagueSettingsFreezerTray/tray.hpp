@@ -1,5 +1,5 @@
 #pragma once
-#include "resource.h"
+#include "resource.hpp"
 #include <shellapi.h>
 
 #define WM_MYMESSAGE (WM_USER + 11)

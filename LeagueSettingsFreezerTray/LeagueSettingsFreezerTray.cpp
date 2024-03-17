@@ -6,10 +6,10 @@
 #include <windows.h>
 // C RunTime Header Files
 
-#include "resource.h"
-#include "tray.h"
-#include "readonly.h"
-#include "leaguedir.h"
+#include "resource.hpp"
+#include "tray.hpp"
+#include "readonly.hpp"
+#include "leaguedir.hpp"
 
 #include <shellapi.h>
 
